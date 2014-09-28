@@ -39,7 +39,7 @@
 ;; (defn repeat_k ([] "k")
 ;;   ([[_ n]] (apply str (repeat n "k"))))
 
-(defn repeat_it ([char] (char))
+(defn repeat_it ([char] char)
   ([char [_ n]] (apply str (repeat n char))))
 
 
