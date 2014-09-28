@@ -1,1 +1,5 @@
 *~
+/public/.lein-repl-history
+/public/.nrepl-port
+/public/out
+/public/target
