@@ -53,9 +53,9 @@
    :k (partial repeat_it "k ")
    :k2tog (partial repeat_it "k2tog ")
    :yo (partial repeat_it "yo ")
-   ;; :instructions (fn [ & rows] ('(:H1 "Instructions: "
-   ;;                               rows)))
-   })
+   :instructions (fn [ & rows] {:H1 "Instructions: "
+                                :ul rows)))
+  })
 
 
 
