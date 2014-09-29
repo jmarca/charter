@@ -59,15 +59,19 @@
 
 
 
+(def yarnstring
+  "Row 1 k3 yo k k2tog k k2tog k yo k3
+  R2: k
+  R3: k3 k2tog k yo k yo twice k k2tog k3
+  R4: k
+  R5: k3 k2tog once k yo 3 times k yo twice k k2tog k"
+  )
+
 (def outputtxt
   (insta/transform once_twice_trnsfm
-                   ( knit-and-yarnover "Row 1 k3 yo k k2tog k k2tog k yo k3
-                                  R2: k
-                                  R3: k3 k2tog k yo k yo twice k k2tog k3
-                                  R4: k
-                                  R3: k3 k2tog once k yo 3 times k yo twice k k2tog k")
-                    )
-   )
+                   ( knit-and-yarnover yarnstring)
+                    ))
+
 
 
 (defn parse-page []
@@ -79,12 +83,8 @@
      [:h1 "Parsing test"]
      [:input {:id "query" :type "text"}]
      [:button {:id "search"} "Search"]
-     (unordered-list ["Row 1 k3 yo k k2tog k k2tog k yo k3"
-          "R2: k"
-          "R3: k3 k2tog k yo k yo twice k k2tog k3"
-          "R4: k"
-          "R3: k3 k2tog once k yo 3 times k yo twice k k2tog k"])
+     [:p "input text: " yarnstring]
      [:p {:id "results"}]
-     outputtxt
+     [:p (to-str outputtxt)]
      (include-js "/js/main.js")
      ]))
