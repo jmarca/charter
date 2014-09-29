@@ -65,14 +65,19 @@
    :k2tog (partial repeat_it "k2tog ")
    :yo (partial repeat_it "yo ")
    :instructions (fn [ & rows] [:H1 "Instructions: "
-                                :ul ( vec rows)])
+                                [:ul ( seq rows)]])
   })
 
 (def outputtxt
   (insta/transform once_twice_trnsfm
                    ( knit-and-yarnover yarnstring)))
 
-
+(hiccup.page/html5     [:head
+     [:title "Hello World"]
+     ]
+    [:body
+     outputtxt
+     ])
 
 
 (defn parse-page []
