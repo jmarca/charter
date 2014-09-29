@@ -43,19 +43,6 @@
   ([char [_ n]] (apply str (repeat n char))))
 
 
-(def once_twice_trnsfm
-  {:word str
-   :number (comp clojure.edn/read-string str)
-   :once (fn [_] 1)
-   :twice (fn [_] 2)
-   :line (fn [label & sts] {:li (apply str label sts)})
-   :linenumber (fn [r n] (apply str "Row " n ": "))
-   :k (partial repeat_it "k ")
-   :k2tog (partial repeat_it "k2tog ")
-   :yo (partial repeat_it "yo ")
-   :instructions (fn [ & rows] {:H1 "Instructions: "
-                                :ul rows)))
-  })
 
 
 
@@ -67,10 +54,24 @@
   R5: k3 k2tog once k yo 3 times k yo twice k k2tog k"
   )
 
+(def once_twice_trnsfm
+  {:word str
+   :number (comp clojure.edn/read-string str)
+   :once (fn [_] 1)
+   :twice (fn [_] 2)
+   :line (fn [label & sts] [:li (apply str label  sts)])
+   :linenumber (fn [r n] (apply str "Row " n ": "))
+   :k (partial repeat_it "k ")
+   :k2tog (partial repeat_it "k2tog ")
+   :yo (partial repeat_it "yo ")
+   :instructions (fn [ & rows] [:H1 "Instructions: "
+                                :ul ( vec rows)])
+  })
+
 (def outputtxt
   (insta/transform once_twice_trnsfm
-                   ( knit-and-yarnover yarnstring)
-                    ))
+                   ( knit-and-yarnover yarnstring)))
+
 
 
 
