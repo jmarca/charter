@@ -70,18 +70,6 @@
    )
 
 
-([:instructions [:line "Row 1" [:k [:repeat 3]] [:yo] [:k] [:k2tog] [:k] [:k2tog] [:k] [:yo] [:k [:repeat 3]]] [:line "Row 2" [:k]] [:line "Row 3" [:k [:repeat 3]] [:k2tog] [:k] [:yo] [:k] [:yo [:repeat 2]] [:k] [:k2tog] [:k [:repeat 3]]] [:line "Row 4" [:k]] [:line "Row 3" [:k [:repeat 3]] [:k2tog [:repeat 1]] [:k] [:yo [:repeat 3]] [:k] [:yo [:repeat 2]] [:k] [:k2tog] [:k]]])
-
-
-(def tmap {:instructions identity
-           :line str
-           }
-  )
-
-(insta/transform tmap outputtxt)
-
-
-
 (defn parse-page []
   (html5
     [:head
@@ -96,6 +84,7 @@
           "R3: k3 k2tog k yo k yo twice k k2tog k3"
           "R4: k"
           "R3: k3 k2tog once k yo 3 times k yo twice k k2tog k"])
-     [:p {:id "results"} (to-str (vec outputtxt))]
+     [:p {:id "results"}]
+     outputtxt
      (include-js "/js/main.js")
      ]))
