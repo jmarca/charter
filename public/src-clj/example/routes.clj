@@ -8,7 +8,7 @@
             [compojure.response :as response]))
 
 (defroutes main-routes
-  (GET "/" [] (index-page))
+  (GET "/" [] (parse-page))
   (GET "/parse" [] (parse-page))
   (route/resources "/")
   (route/not-found "Page not found"))
