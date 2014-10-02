@@ -64,8 +64,8 @@
    :k (partial repeat_it "k ")
    :k2tog (partial repeat_it "k2tog ")
    :yo (partial repeat_it "yo ")
-   :instructions (fn [ & rows] [:H1 "Instructions: "
-                                [:ul ( seq rows)]])
+   :instructions (fn [ & rows] [:div [:H1 "Instructions: "]
+                                [:ul ( seq rows)] ])
   })
 
 (def outputtxt
@@ -91,6 +91,6 @@
      [:button {:id "search"} "Search"]
      [:p "input text: " yarnstring]
      [:p {:id "results"}]
-     [:p (to-str outputtxt)]
+     outputtxt
      (include-js "/js/main.js")
      ]))
